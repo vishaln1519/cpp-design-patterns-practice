@@ -1,0 +1,20 @@
+@startuml Singleton_UML
+
+class Logger <<Singleton>> {
+    - m_type : string
+    --
+    - Logger(copy)
+    - operator=(copy)
+    + Logger()
+    + static getInstance() : Logger
+    + setType(type : string) : void
+    + getType() : void
+}
+
+note right of Logger
+<<Singleton>> pattern:
+- Copy and assignment disabled.
+- getInstance() returns the only instance.
+end note
+
+@enduml
