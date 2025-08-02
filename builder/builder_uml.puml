@@ -1,0 +1,42 @@
+@startuml Builder_UML
+
+class Car {
+    - type : string
+    - engine : string
+    - wheels : string
+    + setType(type : string) : void
+    + setEngine(engine : string) : void
+    + setWheels(wheels : string) : void
+    + show() : void
+}
+
+abstract class CarBuilder {
+    - car : Car
+    + buildEngine() : void
+    + buildWheels() : void
+    + getCar() : Car
+}
+
+class ConcreteFord {
+    + buildEngine() : void
+    + buildWheels() : void
+}
+
+class ConcreteVW {
+    + buildEngine() : void
+    + buildWheels() : void
+}
+
+class Orchestrator {
+    - builder : CarBuilder
+    + setBuilder(b : CarBuilder) : void
+    + createCar() : Car
+}
+
+CarBuilder <|-- ConcreteFord
+CarBuilder <|-- ConcreteVW
+Orchestrator *-- CarBuilder
+CarBuilder --> Car
+
+@enduml
+
