@@ -28,10 +28,39 @@ namespace car_builder
             virtual void buildWheels() = 0;
             std::unique_ptr<Car> getCar();
 
-        private:
+        protected:
             std::unique_ptr<Car> car;
     };
 
+    // Concrete Builder : Ford 
+    class FordBuilder :public CarBuilder
+    {
+        public:
+            FordBuilder();
+            void buildEngine() override;
+            void buildWheels() override;
+    };
+
+    // Concrete Builder : VW
+    class VWBuilder :public CarBuilder
+    {
+        public:
+        VWBuilder();
+        void buildEngine() override;
+        void buildWheels() override;
+    };
+
+    // Orchestrator
+
+    class Orchestrator
+    {
+        public:
+            Orchestrator(std::unique_ptr<CarBuilder> builder);
+            std::unique_ptr<Car> createCar();
+
+        private:
+            std::unique_ptr<CarBuilder> carBuilder;
+    }; 
 
 
 

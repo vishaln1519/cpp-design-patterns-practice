@@ -17,24 +17,25 @@ abstract class CarBuilder {
     + getCar() : Car
 }
 
-class ConcreteFord {
+class FordBuilder {
     + buildEngine() : void
     + buildWheels() : void
 }
 
-class ConcreteVW {
+class VWBuilder {
     + buildEngine() : void
     + buildWheels() : void
 }
 
 class Orchestrator {
+
     - builder : CarBuilder
-    + setBuilder(b : CarBuilder) : void
+    + Orchestrator(builder : CarBuilder)
     + createCar() : Car
 }
 
-CarBuilder <|-- ConcreteFord
-CarBuilder <|-- ConcreteVW
+CarBuilder <|-- FordBuilder
+CarBuilder <|-- VWBuilder
 Orchestrator *-- CarBuilder
 CarBuilder --> Car
 

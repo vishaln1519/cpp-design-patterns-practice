@@ -30,9 +30,48 @@ std::unique_ptr<cb::Car> cb::CarBuilder::getCar()
     return std::move(car);
 }
 
-
-
-int main()
+// ---------------- Ford Builder ----------------
+cb::FordBuilder::FordBuilder()
 {
-    
+    car = std::make_unique<Car>();
+    car->setType("Ford");
 }
+
+void cb::FordBuilder::buildEngine()
+{
+   car->setEngine("Ford EcoBoost Engine");
+}
+
+void cb::FordBuilder::buildWheels()
+{
+   car->setWheels("Ford Alloy Wheels");
+}
+
+// ---------------- VW Builder ----------------
+
+cb::VWBuilder::VWBuilder()
+{
+    car = std::make_unique<Car>();
+    car->setType("VW");
+}
+
+void cb::VWBuilder::buildEngine()
+{
+    car->setEngine("VW TSI Engine");
+}
+
+void cb::VWBuilder::buildWheels()
+{
+    car->setWheels("VW Sport Wheels");
+}
+
+// ---------------- Orchestrator ----------------
+std::unique_ptr<cb::Car> cb::Orchestrator::createCar()
+{
+    carBuilder->buildEngine();
+    carBuilder->buildWheels();
+    return carBuilder->getCar();
+}
+
+cb::Orchestrator::Orchestrator(std::unique_ptr<cb::CarBuilder> builder)
+    : carBuilder(std::move(builder)) {}
