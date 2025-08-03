@@ -22,10 +22,10 @@ builder/
 
 ## 📊 UML Diagram
 
-![Builder Pattern UML](Builder_UML.svg)
+![Builder Pattern UML](./Builder_UML.svg)
 
 > UML generated with PlantUML.  
-> 📄 [View UML Source (builder_pattern.puml)](builder_pattern.puml)
+> 📄 [View UML Source (builder_pattern.puml)](./builder_uml.puml)
 
 ---
 
